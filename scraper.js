@@ -25,7 +25,7 @@ async function scrapeCategory(url, type) {
           id: Buffer.from(link).toString("base64"), // unique ID
           type,
           name,
-          poster: null, // optional: you can fetch TMDB poster here
+          poster: null, // optional: you can fetch TMDB poster later
           magnet_links: [], // will be filled later if needed
           updated_at: new Date().toISOString()
         });
