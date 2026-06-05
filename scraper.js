@@ -1,15 +1,11 @@
-// scraper.js
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { createClient } = require("@supabase/supabase-js");
 
-// Connect to Supabase using environment variables
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
-// User-Agent header to avoid being blocked
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
-// Helper: scrape one category page
 async function scrapeCategory(url, type) {
   try {
     const { data } = await axios.get(url, { headers: { 'User-Agent': USER_AGENT } });
@@ -39,7 +35,6 @@ async function scrapeCategory(url, type) {
   }
 }
 
-// Main runner
 async function run() {
   console.log("🚀 Starting TamilMV scrape...");
 
@@ -68,6 +63,5 @@ async function run() {
   console.log("🎉 Done updating Supabase!");
 }
 
-// Run the scraper
 run().catch(err => console.error("Scraper failed:", err));
 
